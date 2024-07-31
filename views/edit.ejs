@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="main h-screen w-full bg-zinc-900 flex items-center justify-center text-white">    
+        <div class="profile-main-content lg:h-[80%] lg:w-[25%] h-full w-full bg-zinc-500/10 py-2 px-4 flex flex-col items-center rounded-lg">
+            <div class="nav flex items-center gap-4 h-[8%] w-full">
+                <a href="/profile"><i class="ri-arrow-left-line lg:text-xl text-2xl"></i></a>
+                <h6  class="lg:text-xl text-2xl">  Edit profile</h6>
+            </div>
+            <form class="w-full h-full" action="/update/<%= user._id %>" method="post" enctype="multipart/form-data">
+                <div class="flex flex-col items-center justify-center">
+                    
+                <div class="profile-img lg:h-[5vw] lg:w-[5vw] h-[23vw] w-[23vw] rounded-full bg-cyan-500">
+                     <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="/Images/uploads/<%= user.profilePic %>" alt=""> 
+                </div>
+                    <input id="image-input" class="hidden" type="file" name="editProfileImage">
+                    <p id="edit-picture" class="text-zinc-200 mt-1 cursor-pointer">Edit picture</p>
+                </div>
+                <input class="w-full lg:p-2 p-4 outline-none bg-transparent border-2 border-zinc-600 mt-5 rounded-lg" type="text" placeholder="Name" name="name" value="<%= user.name %>">
+                <input class="w-full lg:p-2 p-4 outline-none bg-transparent border-2 border-zinc-600 mt-5 rounded-lg" type="text" placeholder="Username" name="username" value="<%= user.username %>">
+                <input class="w-full lg:p-2 p-4 outline-none bg-transparent border-2 border-zinc-600 mt-5 rounded-lg" type="text" placeholder="Bio" name="bio" value="<%= user.bio %>">
+                <input class="w-full lg:p-2 p-4 lg:text-lg text-xl bg-blue-600 text-white font-semibold rounded-lg lg:mt-4 mt-6 cursor-pointer" type="submit" value="Update Details">
+            </form>
+        </div>
+    </div>
+
+
+   <script>
+    document.querySelector("#edit-picture").addEventListener("click", function(){
+        document.querySelector("#image-input").click()
+    })
+   </script>
+</body>
+</html>

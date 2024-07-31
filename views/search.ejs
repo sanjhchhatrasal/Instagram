@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="main h-screen w-full bg-zinc-900 flex items-center justify-center text-white">    
+        <div class="profile-main-content lg:h-[80%] lg:w-[25%] h-full w-full bg-zinc-500/10 py-5 px-4 flex flex-col items-center rounded-lg relative">
+        <div class="border-2 border-zinc-500 flex items-center justify-between px-2 py-1 rounded-md w-full">
+            <i class="text-white ri-search-line mr-3"></i>
+            <input class="input ml-1 w-full py-2 outline-none text-zinc-400 bg-transparent" type="text"
+                placeholder="search username">
+        </div>
+        <div class="users">
+
+        </div>
+        <div class="footer text-white flex justify-between items-center h-[8%] w-full bottom-0 absolute z-[10] px-6 py-2">
+            <a href="/feed"><i class="text-[1.2rem] ri-home-line"></i></a>
+            <a href="/search"><i class="text-[1.2rem] ri-search-line"></i></a>
+            <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
+            <a href="/profile">
+              <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
+                <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+              </div>
+            </a>
+          </div>
+
+    <script>
+        var inp = document.querySelector(".input")
+
+        inp.addEventListener("input", function (e) {
+            if (inp.value !== '') {
+                fetch(`/search/${inp.value}`)
+                    .then(raw => raw.json())
+                    .then(result => {
+                        let clutter = "";
+
+                        result.forEach((item) => {
+                            clutter += `<a href="/profile/${item.username}" class="outline-none">
+            <div class="text-white flex items-center gap-2 mt-5">
+                <div class="image w-[11vw] h-[11vw] rounded-full bg-sky-100 overflow-hidden">
+                    <img src="/images/uploads/${item.picture}" alt="">
+                    </div>
+                <div class="text">
+                    <h3>${item.username}</h3>
+                    <h4 class="text-xs opacity-30 leading-none">${item.name}</h4>
+                </div>
+            </div>            
+        </a>`
+                        })
+
+                        document.querySelector(".users")
+                            .innerHTML = clutter;
+                    });
+            }
+        })
+    </script>
+           
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<style>
+    .posts::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="main h-screen w-full bg-zinc-900 flex items-center justify-center text-white">    
+        <div class="profile-main-content overflow-hidden whitespace-nowrap cursor-grab overflow-x-auto lg:h-[80%] lg:w-[25%] h-full w-full bg-zinc-500/10 py-2 px-4 flex flex-col items-center rounded-lg relative">
+            <div class="nav flex items-center justify-between h-[8%] w-full mt-23">
+                <div class="logo h-full w-full relative flex items-center mt-2">
+                    <img class="lg:w-[7vw] w-[25vw] absolute" src="/Images/logo.png" alt="">
+                </div>
+                <div class="flex items-center gap-5">
+                    <i class="ri-heart-line lg:text-xl text-2xl cursor-pointer"></i>
+                    <i class="ri-message-3-line lg:text-xl text-2xl cursor-pointer"></i>
+                </div>
+            </div>
+             <div class="story flex shrink-0 flex-nowrap gap-2 items-center h-[15%] lg:mt-3 mt-2">
+                        <a href="/story">
+                          <div class="circle flex-shrink-0">
+                            <div
+                              class="gradient w-[18vw] h-[18vw] lg:h-[5vw] lg:w-[5vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                              <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                                <img class="w-full h-full object-cover" src="/Images/uploads/bull.jpg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a href="/story">
+                            <div class="circle flex-shrink-0">
+                              <div
+                                class="gradient w-[18vw] h-[18vw] lg:h-[5vw] lg:w-[5vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                                <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="/Images/uploads/cat.jpg" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="/story">
+                            <div class="circle flex-shrink-0">
+                              <div
+                                class="gradient w-[18vw] h-[18vw] lg:h-[5vw] lg:w-[5vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                                <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="/Images/uploads/catt.jpg" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                          <a href="/story">
+                            <div class="circle flex-shrink-0">
+                              <div
+                                class="gradient w-[18vw] h-[18vw] lg:h-[5vw] lg:w-[5vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                                <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="/Images/uploads/girl.jpg" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                          <a class="lg:hidden" href="/story">
+                            <div class="circle flex-shrink-0">
+                              <div
+                                class="gradient w-[18vw] h-[18vw] lg:h-[5vw] lg:w-[5vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
+                                <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
+                                  <img class="w-full h-full object-cover" src="/Images/uploads/teddy.jpg" alt="">
+                                </div>
+                              </div>
+                            </div>
+                          </a>
+                     
+               
+            </div>
+            <div class="posts h-[fit-content] w-full flex flex-wrap gap-4 mt-5 mb-10 overflow-y-auto overflow-hidden">
+                <% posts.reverse().forEach(function(post){ %>
+
+                  <% if(post.user){ %>
+                    <div class="post flex flex-col justify-between lg:h-[23vw] h-[55vh] w-full">
+                      <div class="name lg:h-[13%] h-[17%] w-full flex items-center gap-3 py-1">
+                          <div class="dp-img lg:h-9 lg:w-9 h-12 w-12 rounded-full bg-blue-600 overflow-hidden">
+                              <img class="h-full w-full object-cover" src="/images/uploads/<%= post.user.profilePic %>" alt="">
+                          </div>
+                          <div class="name lg:text-xl text-2xl"><%= post.user.username %></div>
+                      </div>
+                      <div class="img-post lg:h-[60%] h-[58%] w-full bg-white">
+                          <img class="h-full w-full object-contain" src="/images/uploads/<%= post.postPic %>" alt="">
+                      </div>
+                      <div class="h-[25%] w-full px-2">
+                          <div class="pt-1 w-full flex items-center justify-between">
+                              <div class="share flex gap-2">
+                                <a href="/post/like/<%= post._id %>">
+                                  <% if(post.likes.indexOf(user._id) === -1) { %>
+                                    <i class="ri-heart-line lg:text-xl text-2xl cursor-pointer"></i>
+                                  <% } else { %>
+                                    <i class="ri-heart-fill text-red-600 lg:text-xl text-2xl cursor-pointer"></i>
+                                  <% } %>
+                                  </a>
+                                
+                                  <i class="ri-chat-3-line lg:text-xl text-2xl cursor-pointer"></i>
+                                  <i class="ri-share-circle-fill lg:text-xl text-2xl cursor-pointer"></i>
+                              </div>
+                              <i class="ri-save-line lg:text-xl text-2xl cursor-pointer"></i>
+                          </div>
+                          <div class="like">
+                              <h1 class="lg:text-lg text-xl"><%= post.likes.length %> likes</h1>
+                          </div>
+                          <div class="cmnt">
+                              <p class="text-lg lg:text-sm"><span class="font-semibold text-xl lg:text-lg">sanjh</span> <%= post.caption %></p>
+                          </div>
+                      </div>
+                  </div>
+                <%  } else{ %>
+                    <p>No posts</p>
+               <% } %>
+             <%   }) %>
+            </div>
+            <div class="footer text-white flex justify-between items-center h-[8%] bg-zinc-500/10 w-full bottom-0 absolute z-[10] px-6 py-2">
+                <a href="/feed"><i class="text-[1.2rem] ri-home-line"></i></a>
+                <a href="/search"><i class="text-[1.2rem] ri-search-line"></i></a>
+                <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
+                <a href="/profile">
+                  <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+                  </div>
+                </a>
+              </div>
+        </div>
+
+        
+    </div>
+
+
+
+    <script>
+        /* let profileContent = document.querySelector(".posts");
+        profileContent.scrollTop = profileContent.scrollHeight; */
+
+        document.querySelector(".plus").addEventListener("click", function(){
+            document.querySelector("#profilePicUpload").click();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<style>
+    .posts::-webkit-scrollbar{
+        display: none;
+    }
+    #sidebar{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="main h-screen w-full bg-zinc-900 flex items-center justify-center text-white">    
+        <div class="profile-main-content lg:h-[80%] lg:w-[25%] h-full w-full bg-zinc-500/10 py-2 px-4 flex flex-col items-center rounded-lg relative">
+            <div class="nav flex items-center justify-between h-[8%] w-full">
+                <h6 class="lg:text-xl text-2xl"><%= user.username %></h6>
+                <div class="flex items-center gap-5">
+                    <a href="/post"><i class="ri-add-box-line lg:text-xl text-2xl cursor-pointer"></i></a>
+                    <h6 id="menu"><i  class="menu ri-menu-line lg:text-xl text-2xl cursor-pointer"></i></h6>
+                </div>
+            </div>
+            <div id="sidebar" class="sidebar h-[80%] w-[60%] bg-zinc-800 absolute right-0 top-16 flex flex-col items-center gap-5">
+                <a class="lg:text-xl text-2xl text-red-500 mt-10" href="/logout">LogOut</a>
+                <h6 id="close" class="close lg:text-xl text-2xl cursor-pointer">Close</h6>
+            </div>
+            <div class="follow flex items-center justify-between h-[15%] w-full mt-3">
+                    <div class="profile-img lg:h-[5vw] lg:w-[5vw] h-[23vw] w-[23vw] rounded-full bg-cyan-500 relative">
+                        <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="/Images/uploads/<%= user.profilePic %>" alt="">
+                      </div>
+                <div class="flex items-center gap-5 text-center">
+                    <div class="post-no">
+                        <h6 class="lg:text-lg text-xl"><%= user.posts.length %></h6>
+                        <h6 class="lg:text-lg text-xl">Posts</h6>
+                    </div>
+                    <div class="follower">
+                        <h6 class="lg:text-lg text-xl">300</h6>
+                        <h6 class="lg:text-lg text-xl">follower</h6>
+                    </div>
+                    <div class="following">
+                        <h6 class="lg:text-lg text-xl">300</h6>
+                        <h6 class="lg:text-lg text-xl">following</h6>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="bio h-[fit-content] w-full mt-2">
+                <h5><%= user.name %></h5>
+                <p class="mb-2 text-sm text-zinc-300"><%= user.bio %></p>
+                <a class="px-2 py-1 mt-1 rounded-lg bg-zinc-300/10" href="/edit/<%= user._id %>">Edit Profile</a>
+            </div>
+            <div class="posts h-[fit-content] w-full flex flex-wrap gap-1 mt-3 overflow-y-auto overflow-hidden">
+                <% if(user.posts.length > 0){ %>
+                    <% user.posts.reverse().forEach(function(post){ %>
+                        <div class="post w-[32.5%] h-32 bg-cyan-500">
+                            <img class="h-full w-full object-cover" src="/Images/uploads/<%= post.postPic %>" alt="">
+                        </div>
+                   <% }) %>
+               <% } else{ %>
+                    <div class="flex flex-col items-center justify-center mt-5 ml-20">
+                        <p class="text-xl">No posts to show</p>
+                    <img class="lg:w-[3vw] w-[13vw] mt-3" src="/Images/uploads/post.webp" alt="">
+                    </div>
+             <%  } %>
+            </div>
+            <div class="footer text-white flex justify-between items-center h-[8%] w-full bottom-0 absolute z-[10] px-6 py-2">
+                <a href="/feed"><i class="text-[1.2rem] ri-home-line"></i></a>
+                <a href="/search"><i class="text-[1.2rem] ri-search-line"></i></a>
+                <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
+                <a href="/profile">
+                  <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+                  </div>
+                </a>
+              </div>
+        </div>
+
+        
+    </div>
+
+
+
+    <script>
+        let profileContent = document.querySelector(".posts");
+        profileContent.scrollTop = profileContent.scrollHeight;
+
+        let sideBar = document.querySelector("#sidebar")
+
+        document.querySelector("#menu").addEventListener("click", function(){
+            sideBar.style.display = "flex"
+            console.log("menu clicked")
+        })
+
+        document.querySelector("#close").addEventListener("click", function(){
+            sideBar.style.display = "none"
+            console.log("close clicked")
+        })
+    </script>
+</body>
+</html>

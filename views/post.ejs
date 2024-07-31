@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<style>
+    .posts::-webkit-scrollbar{
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="main h-screen w-full bg-zinc-900 flex items-center justify-center text-white">    
+        <div class="profile-main-content lg:h-[80%] lg:w-[25%] h-full w-full bg-zinc-500/10 py-2 px-4 flex flex-col items-center rounded-lg relative">
+            <div class="nav flex items-center justify-between h-[8%] w-full">
+                <a class="text-blue-600 lg:text-lg text-xl" href="/profile"><i class="ri-arrow-left-line "></i> Profile</a>
+                <h6 class="lg:text-lg text-xl">Upload Post</h6>
+                <a class="lg:text-lg text-xl" href="/feed">Feed <i class=" ri-home-line"></i></a>
+                
+            </div>
+            <form class="h-full w-full mt-10 flex flex-col items-center" action="/post/uploadPost" method="post" enctype="multipart/form-data">
+                <div class="flex flex-col items-center">
+                    <div class="post-pic h-20 w-20 rounded-full border-2 border-zinc-600 flex items-center justify-center">
+                        <img class=" object-cover lg:w-[2vw] w-[6vw]" src="/Images/uploads/post.webp" alt="">
+                        
+                    </div>
+                    <input class="hidden" id="postPicUpload" type="file" name="postPic">
+                <h6 class="select-pic cursor-pointer text-xl lg:text-lg text-blue-500 mt-3">Select Picture</h6>
+                </div>
+                <div class="content lg:mt-5 mt-10 w-full px-4">
+                    <textarea class="resize-none bg-transparent p-2 w-full rounded-lg border-2 border-zinc-600 outline-none text-xl lg:text-lg" placeholder="Caption for the post..." rows="3" name="caption"></textarea>
+                    <input class="w-full rounded-lg text-white font-semibold bg-blue-600 mt-3 lg:py-2 py-3 lg:text-lg text-xl cursor-pointer" type="submit" value="Post">
+                </div>
+            </form>
+            <div class="footer text-white flex justify-between items-center h-[8%] w-full bottom-0 absolute z-[10] px-6 py-2">
+                <a href="/feed"><i class="text-[1.2rem] ri-home-line"></i></a>
+                <a href="/search"><i class="text-[1.2rem] ri-search-line"></i></a>
+                <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
+                <a href="/profile">
+                  <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
+                    <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+                  </div>
+                </a>
+              </div>
+        </div>
+
+        
+    </div>
+
+
+
+    <script>
+
+        document.querySelector(".select-pic").addEventListener("click", function(){
+            document.querySelector("#postPicUpload").click();
+        })
+    </script>
+</body>
+</html>

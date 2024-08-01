@@ -35,7 +35,7 @@
             </div>
             <div class="follow flex items-center justify-between h-[15%] w-full mt-3">
                     <div class="profile-img lg:h-[5vw] lg:w-[5vw] h-[23vw] w-[23vw] rounded-full bg-cyan-500 relative">
-                        <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="/Images/uploads/<%= user.profilePic %>" alt="">
+                        <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="data:image/jpg;base64, <%= user.profilePic.toString("base64") %>" alt="">
                       </div>
                 <div class="flex items-center gap-5 text-center">
                     <div class="post-no">
@@ -62,13 +62,13 @@
                 <% if(user.posts.length > 0){ %>
                     <% user.posts.reverse().forEach(function(post){ %>
                         <div class="post w-[32.5%] h-32 bg-cyan-500">
-                            <img class="h-full w-full object-cover" src="/Images/uploads/<%= post.postPic %>" alt="">
+                            <img class="h-full w-full object-cover" src="data:image/jpg;base64, <%= post.user.profilePic.toString("base64") %>" alt="">
                         </div>
                    <% }) %>
                <% } else{ %>
                     <div class="flex flex-col items-center justify-center mt-5 ml-20">
                         <p class="text-xl">No posts to show</p>
-                    <img class="lg:w-[3vw] w-[13vw] mt-3" src="/Images/uploads/post.webp" alt="">
+                    <img class="lg:w-[3vw] w-[13vw] mt-3" src="../public/Images/uploads/post.webp" alt="">
                     </div>
              <%  } %>
             </div>
@@ -78,7 +78,7 @@
                 <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
                 <a href="/profile">
                   <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
-                    <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+                    <img class="w-full h-full object-cover" src="data:image/jpg;base64, <%= user.profilePic.toString("base64") %>" alt="">
                   </div>
                 </a>
               </div>

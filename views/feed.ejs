@@ -89,12 +89,12 @@
                     <div class="post flex flex-col justify-between lg:h-[23vw] h-[55vh] w-full">
                       <div class="name lg:h-[13%] h-[17%] w-full flex items-center gap-3 py-1">
                           <div class="dp-img lg:h-9 lg:w-9 h-12 w-12 rounded-full bg-blue-600 overflow-hidden">
-                              <img class="h-full w-full object-cover" src="/images/uploads/<%= post.user.profilePic %>" alt="">
+                              <img class="h-full w-full object-cover" src="data:image/jpg;base64, <%= post.user.profilePic.toString("base64") %>" alt="">
                           </div>
                           <div class="name lg:text-xl text-2xl"><%= post.user.username %></div>
                       </div>
                       <div class="img-post lg:h-[60%] h-[58%] w-full bg-white">
-                          <img class="h-full w-full object-contain" src="/images/uploads/<%= post.postPic %>" alt="">
+                          <img class="h-full w-full object-contain" src="data:image/jpg;base64, <%= post.postPic.toString("base64") %>" alt="">
                       </div>
                       <div class="h-[25%] w-full px-2">
                           <div class="pt-1 w-full flex items-center justify-between">
@@ -131,7 +131,7 @@
                 <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
                 <a href="/profile">
                   <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
-                    <img class="w-full h-full object-cover" src="/images/uploads/<%= user.profilePic %>" alt="">
+                    <img class="w-full h-full object-cover" src="data:image/jpg;base64, <%= user.profilePic.toString("base64") %>" alt="">
                   </div>
                 </a>
               </div>

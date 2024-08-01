@@ -30,7 +30,6 @@ module.exports.registerUserPage = async (req, res) => {
         maxAge: 30 * 24 * 60 * 60 * 1000
     })
     res.redirect("/profile");
-    console.log(user)
     console.log("token", token)
 } catch (error){
     console.error(error)
@@ -54,13 +53,10 @@ module.exports.loginUserPage = async (req, res) => {
             httpOnly: true,
             secure: true
         });
-        console.log(password, user.password);
         res.redirect("/profile");
     } else{
         res.redirect("/login");
     }
-    
-    console.log(securedPassword)
    } catch(error){
     console.error(error)
     res.send("server error")

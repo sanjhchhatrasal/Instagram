@@ -62,7 +62,7 @@
                 <% if(user.posts.length > 0){ %>
                     <% user.posts.reverse().forEach(function(post){ %>
                         <div class="post w-[32.5%] h-32 bg-cyan-500">
-                            <img class="h-full w-full object-cover" src="data:image/jpg;base64, <%= post.user.profilePic.toString("base64") %>" alt="">
+                            <img class="h-full w-full object-cover" src="data:image/jpg;base64, <%= post.postPic.toString("base64") %>" alt="">
                         </div>
                    <% }) %>
                <% } else{ %>

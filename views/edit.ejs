@@ -21,7 +21,7 @@
                 <div class="flex flex-col items-center justify-center">
                     
                 <div class="profile-img lg:h-[5vw] lg:w-[5vw] h-[23vw] w-[23vw] rounded-full bg-cyan-500">
-                     <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="data:image/jpg;base64, <%= user.profilePic.toString("base64") %>" alt=""> 
+                     <img id="profilePic" class="h-full w-full object-cover rounded-full bg-blue-600" src="<%= user.profilePic ? `data:image/jpg;base64,${user.profilePic.toString("base64")}` : '/Images/uploads/default.webp' %>" alt=""> 
                 </div>
                     <input id="image-input" class="hidden" type="file" name="editProfileImage">
                     <p id="edit-picture" class="text-zinc-200 mt-1 cursor-pointer">Edit picture</p>

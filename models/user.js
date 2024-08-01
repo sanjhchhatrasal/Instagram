@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: Buffer,
-        default: "default.webp"
+       // default: "default.webp"
     },
     posts: [
         {

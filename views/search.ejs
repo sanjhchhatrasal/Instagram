@@ -27,7 +27,7 @@
             <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
             <a href="/profile">
               <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
-                <img class="w-full h-full object-cover" src="data:image/jpg;base64, <%= user.profilePic.toString("base64") %>" alt="">
+                <img class="w-full h-full object-cover" src="<%= user.profilePic ? `data:image/jpg;base64,${user.profilePic.toString("base64")}` : '/Images/uploads/default.webp' %>" alt="">
               </div>
             </a>
           </div>

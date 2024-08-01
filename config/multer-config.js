@@ -1,20 +1,21 @@
 const multer = require("multer");
 const path = require("path");
-const crypto = require("crypto");
+const storage = multer.memoryStorage();
 
+function fileFilter (req, file,  cb){
+    let extname = [".jpeg", ".jpg", ".webp" , ".png"];
+    let ext = path.extname(file.originalname);
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './public/Images/uploads')
-    },
-    filename: function (req, file, cb) {
-      crypto.randomBytes(12, function(err,name ){
-        const fn = name.toString("hex")+path.extname(file.originalname);
-        cb(null, fn)
-      })
-      
+    let included = extname.includes(ext);
+
+    if(included){
+        cb(null, true)
+    } else{
+        cb(new Error("These files are not allowed", false))
     }
-  })
-  
-  const upload = multer({ storage: storage });
-  module.exports = upload;
+}
+
+
+const upload = multer({storage: storage, fileFilter: fileFilter});
+
+module.exports = upload

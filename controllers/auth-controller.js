@@ -87,7 +87,7 @@ module.exports.editPage = async (req, res) => {
 module.exports.uploadPage = async (req, res) => {
     let user = await userModel.findOneAndUpdate({_id: req.params.id}, {name: req.body.name, username: req.body.username, bio: req.body.bio }, {new: true});
    if(req.file){
-    user.profilePic = req.file.filename;
+    user.profilePic = req.file.buffer;
     await user.save();
    }
    

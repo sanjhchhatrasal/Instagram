@@ -13,7 +13,7 @@ module.exports.postCreate = async (req, res) => {
     let post = await postModel.create({
         user: user._id,
         caption: req.body.caption,
-        postPic: req.file.filename
+        postPic: req.file.buffer
     })
     user.posts.push(post._id);
     await user.save();

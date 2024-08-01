@@ -21,7 +21,7 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     postPic: {
-        type: String,
+        type: Buffer,
         required: true
     },
     likes: [

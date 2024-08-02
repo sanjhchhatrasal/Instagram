@@ -107,7 +107,7 @@
                                   <% } %>
                                   </a>
                                 
-                                  <i class="ri-chat-3-line lg:text-xl text-2xl cursor-pointer"></i>
+                                  <a href="/post/comment/<%= post._id %>"> <i class="ri-chat-3-line lg:text-xl text-2xl cursor-pointer"></i></a>
                                   <i class="ri-share-circle-fill lg:text-xl text-2xl cursor-pointer"></i>
                               </div>
                               <i class="ri-save-line lg:text-xl text-2xl cursor-pointer"></i>
@@ -116,7 +116,7 @@
                               <h1 class="lg:text-lg text-xl"><%= post.likes.length %> likes</h1>
                           </div>
                           <div class="cmnt">
-                              <p class="text-lg lg:text-sm"><span class="font-semibold text-xl lg:text-lg">sanjh</span> <%= post.caption %></p>
+                              <p class="text-lg lg:text-sm"><span class="font-semibold text-xl lg:text-lg"><%= post.user.username %></span> <%= post.caption %></p>
                           </div>
                       </div>
                   </div>

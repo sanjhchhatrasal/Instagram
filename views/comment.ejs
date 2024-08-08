@@ -37,7 +37,7 @@
 
                    <% }) %>
                 </div>
-                <div class="input-comment h-[30%] w-full">
+                <div class="input-comment h-[30%] w-full absolute lg:-bottom-10 -bottom-7">
                     <input id="input-comment-box" class="w-[80%] lg:p-2 p-4 outline-none bg-transparent border-2 border-zinc-600  rounded-lg"  type="text" placeholder="Write your comment..." name="comment">
                     <input id="send-comment" class="w-[20%] lg:p-2 p-4 lg:text-lg text-xl bg-blue-600 text-white font-semibold rounded-lg lg:mt-4 mt-8 cursor-pointer" type="submit" name="" id="" value="Post">
                 </div>
@@ -48,7 +48,7 @@
                 <a href="/post"><i class="text-[1.2rem] ri-add-box-line"></i></a>
                 <a href="/profile">
                     <div class="w-7 h-7 bg-zinc-300 rounded-full overflow-hidden">
-                        <img class="w-full h-full object-cover" src="<%= user.profilePic ? `data:image/jpg;base64,${user.profilePic.toString("base64")}` : '/Images/uploads/default.webp' %>" alt="">
+                        <img class="w-full h-full object-cover" src="<%= user.profilePic ? `data:image/jpg;base64,${user.profilePic.toString('base64')}` : '/Images/uploads/default.webp' %>" alt="">
                       </div>
                 </a>
               </div>

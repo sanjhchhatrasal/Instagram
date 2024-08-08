@@ -12,7 +12,9 @@ module.exports.registerUserPage = async (req, res) => {
     let {username, name, email, password} = req.body;
 
     let user = await userModel.findOne({email})
-    if(user) return res.redirect("/login");
+    if (user) {
+        return res.status(500).redirect("/login");
+      }
 
      let salt = await bcrypt.genSalt(10)
     let hash = await bcrypt.hash(password, salt) 
